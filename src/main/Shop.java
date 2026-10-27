@@ -223,23 +223,24 @@ public class Shop {
 		File f = new File(System.getProperty("user.dir") + File.separator + "files" + File.separator + ITEMS_FILE);
 
 		// TODO RA1-ISSUE-03: obrir el fitxer, llegir-lo linia a linia i afegir cada producte a inventory.
-		try {
-			BufferedReader bf = new BufferedReader(new FileReader(f));
-			String Linea = "";
+		try (BufferedReader reader = new BufferedReader(new FileReader(f))) {
+			String line;
 			
-			/* while(Linea = bf.readLine() != null)
-			{
-				
-			}
-			*/
-			
-		} catch (FileNotFoundException e) {
+			 while ((line = reader.readLine()) != null) {
+				 System.out.println("Linia llegida: " + line);
+			 }
+			 
+			 
+		} catch (IOException  e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
 		// TODO RA1-ISSUE-04: delegar la conversio de cada linia a parseProductLine.
+		
+		
+		
+		
 		// TODO RA1-ISSUE-11: tractar fitxer absent o error de lectura amb un missatge comprensible.
 		System.out.println("RA1-ISSUE-03 pendent: encara no s'ha carregat " + f.getPath());
 	}
