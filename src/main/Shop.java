@@ -227,7 +227,10 @@ public class Shop {
 			String line;
 			
 			 while ((line = reader.readLine()) != null) {
-				 System.out.println("Linia llegida: " + line);
+				 Product product = parseProductLine(line);
+				 if (product != null) {
+					 inventory.add(product);
+				 }
 			 }
 			 
 			 
@@ -236,24 +239,44 @@ public class Shop {
 			e.printStackTrace();
 		}
 		
+		
+		
+		
 		// TODO RA1-ISSUE-04: delegar la conversio de cada linia a parseProductLine.
 		
 		
 		
 		
+		
+		
+		
+		
 		// TODO RA1-ISSUE-11: tractar fitxer absent o error de lectura amb un missatge comprensible.
-		System.out.println("RA1-ISSUE-03 pendent: encara no s'ha carregat " + f.getPath());
+		// System.out.println("RA1-ISSUE-03 pendent: encara no s'ha carregat " + f.getPath());
 	}
 
 	/**
 	 * Convert a valid line from items.txt into a Product.
 	 */
 	private Product parseProductLine(String line) {
-		// TODO RA1-ISSUE-04: validar camps, convertir preu i estoc, i retornar un Product.
-		// TODO RA1-ISSUE-05: decidir com es tracten les linies mal formades.
-		return null;
+		String[] camps = line.split(";");
+		String nom = camps[0].split(":")[1];
+		double preu = Double.parseDouble(camps[1].split(":")[1]);
+		int stock = Integer.parseInt(camps[2].split(":")[1]);
+		
+		return new Product(nom, new Amount(preu), true, stock);
+		
 	}
+	
+	// TODO RA1-ISSUE-04: validar camps, convertir preu i estoc, i retornar un Product.
+	// TODO RA1-ISSUE-05: decidir com es tracten les linies mal formades.
 
+	
+	
+	
+	
+	
+	
 	/**
 	 * Save the current inventory to items.txt.
 	 */
