@@ -298,13 +298,38 @@ public class Shop {
 		System.out.println("Diners actuals: " + cash);
 	}
 
+	
+	
+	
+	
+	
 	/**
 	 * add a new product to inventory getting data from console
 	 */
-	public void addProduct() {
-		// TODO RA1-ISSUE-06: demanar dades minimes, crear un Product i afegir-lo a inventory.
-		System.out.println("RA1-ISSUE-06 pendent: encara no es poden afegir articles.");
+	
+	private void addProduct () {
+		
+		System.out.print("Nom del pruducte: ") ;  
+		String nom = CONSOLE.next(); 
+		
+		System.out.print("Preu del producte: ") ;  
+		Double preu = CONSOLE.nextDouble(); 
+		
+		System.out.print("Estoc: ") ;  
+		int stock = CONSOLE.nextInt();
+		
+		Product product = new Product(nom,new Amount(preu),true,stock);
+		inventory.add(product);
+		System.out.println("Producte afegit correta");
 	}
+
+	
+	
+	// TODO RA1-ISSUE-06: demanar dades minimes, crear un Product i afegir-lo a inventory.
+	
+	
+	
+	
 
 	/**
 	 * remove a new product to inventory getting data from console
