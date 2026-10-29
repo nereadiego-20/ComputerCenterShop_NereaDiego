@@ -259,6 +259,8 @@ public class Shop {
 	 * Convert a valid line from items.txt into a Product.
 	 */
 	private Product parseProductLine(String line) {
+	
+		try {
 		String[] camps = line.split(";");
 		String nom = camps[0].split(":")[1];
 		double preu = Double.parseDouble(camps[1].split(":")[1]);
@@ -266,6 +268,10 @@ public class Shop {
 		
 		return new Product(nom, new Amount(preu), true, stock);
 		
+	} catch (Exception e) {
+		System.out.println("Línia incorreta: " +line);
+		return null;
+		}
 	}
 	
 	// TODO RA1-ISSUE-04: validar camps, convertir preu i estoc, i retornar un Product.
