@@ -339,13 +339,34 @@ public class Shop {
 		System.out.println("RA1-ISSUE-08 pendent: encara no es poden eliminar articles.");
 	}
 
+	
+	
+	
 	/**
 	 * add stock for a specific product
 	 */
 	public void addStock() {
-		// TODO RA1-ISSUE-07: trobar un Product i actualitzar el seu estoc.
-		System.out.println("RA1-ISSUE-07 pendent: encara no es pot modificar l'estoc.");
+		CONSOLE.nextLine();
+		
+		System.out.println("Nom del producte");
+		String nom = CONSOLE.nextLine();
+		Product product = findProduct(nom);
+		
+		if(product != null) {
+			System.out.print("Nou estoc:");
+			int stock = CONSOLE.nextInt();
+			product.setStock(stock);
+			System.out.println("Estoc actualitzat correctament");
+		} else {
+			System.out.println("Producte no trobat");
+		}
 	}
+	// TODO RA1-ISSUE-07: trobar un Product i actualitzar el seu estoc.
+	
+	
+	
+	
+	
 
 	/**
 	 * set a product as expired
