@@ -335,10 +335,29 @@ public class Shop {
 	 * remove a new product to inventory getting data from console
 	 */
 	public void removeProduct() {
-		// TODO RA1-ISSUE-08: retirar un Product de inventory sense alterar la resta.
-		System.out.println("RA1-ISSUE-08 pendent: encara no es poden eliminar articles.");
+		CONSOLE.nextLine();
+		
+		System.out.println("Nom del producte");
+		String nom = CONSOLE.nextLine();
+		Product product = findProduct(nom);
+		
+		if(product != null) {
+			inventory.remove(product);
+			System.out.println("Producte eliminiat correctament");
+			
+		} else {
+			System.out.println("Producte no trobat");
+		}
+	
+		
 	}
 
+	// TODO RA1-ISSUE-08: retirar un Product de inventory sense alterar la resta.
+	
+	
+	
+	
+	
 	
 	
 	
